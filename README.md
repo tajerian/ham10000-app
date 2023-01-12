@@ -70,3 +70,7 @@ The model’s Precisions and Recalls and F1 Scores is described and compared in 
 ## The model’s worst predictions
 After making the predictions for all test images, we sorted the wrong predictions by their inferred probability to find those images that the model guessed wrong with the highest confidence. This procedure helps finding both the dataset and the model’s problems. It is possible that an image is incorrectly labeled and the model is actually doing right, for instance in the top 20 most wrong (see the Figure bellow) predictions we found 2 identical images which are obviously a same lesion and one of them should be deleted from the dataset.
 ![model worst pred](https://github.com/tajerian/ham10000-app/blob/main/worst.png?raw=true)
+<br>
+
+
+
