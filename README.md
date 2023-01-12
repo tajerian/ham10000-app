@@ -39,6 +39,7 @@ In order to artificially increase the instances a data augmentation technique us
 ## ML model performance
 The Machine Learning model was trained and tested on Google Colaboratory environment with an Intel(R) Xeon(R) 2.30GHz CPU processor and 13GB of RAM and NVIDIA Tesla T4 CUDA enabled GPU processor with CUDA 11.2 which has designed for high-performance computing, deep learning training and inference, machine learning, and data analytics. The model was created with Python 3.8.6, and TensorFlow 2.11, Scikit-Learn 1.0.2, and Numpy as dependencies.<br>
 We used an Adaptive Momentum (Adam) optimizer on Categorical Cross Entropy loss function with a dynamic learning rate (LR) starting from 0.001. For fine tuning in order to make the optimizer converge faster and get closer to the global minimum of the loss function, the learning was set high in early epochs and by getting closer to the global optimum the learning rates decreased to take tiny steps toward the global optimum, also we used the ReduceLROnPlateau callback to reduce the LR even more if the validation loss did not improve after 3 epochs. The metrics and LR for each epoch is described in the Table bellow.
+
 |epoch|loss|accuracy|val_loss|val_accuracy|LR|
 | :---:|:--:| :------:| :------:| :----------:|-:|
 |0|0.8674|0.6979|0.7513|0.7250|1.0e-03|
@@ -60,6 +61,11 @@ We used an Adaptive Momentum (Adam) optimizer on Categorical Cross Entropy loss 
 |16|0.2851|0.9018|0.4450|0.8390|1.0e-05|
 |17|0.2522|0.9169|0.4387|0.8420|1.0e-06|
 |18|0.2470|0.9177|0.4387|0.8430|1.0e-08|
-<br><br><br><br>
+
+<br><br>
 The model’s Precisions and Recalls and F1 Scores is described and compared in Figure based on each class. As demonstrated in Figure, the model has the best performance in detecting melanocytic nevi lesions with the F1 score of 0.93. This performance difference between the classes is mainly due to the highly imbalance classes of the dataset. As the model get trained with lots of melanocytic nevi images which was about 5364 images (comparing to 92 dermatofibroma images), inevitably the model learns more patterns to detect this specific class and higher performance on this class.
-![model-arch description](https://github.com/tajerian/ham10000-app/blob/main/metric.png?raw=true)
+![model metric](https://github.com/tajerian/ham10000-app/blob/main/metric.png?raw=true)
+
+## The model’s worst predictions
+After making the predictions for all test images, we sorted the wrong predictions by their inferred probability to find those images that the model guessed wrong with the highest confidence. This procedure helps finding both the dataset and the model’s problems. It is possible that an image is incorrectly labeled and the model is actually doing right, for instance in the top 20 most wrong (see the Figure bellow) predictions we found 2 identical images which are obviously a same lesion and one of them should be deleted from the dataset.
+![model worst pred](https://github.com/tajerian/ham10000-app/blob/main/worst.png?raw=true)
