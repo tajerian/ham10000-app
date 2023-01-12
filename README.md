@@ -1,4 +1,4 @@
-# a new machine-learning based diagnostic tool for differentiation of dermatoscopic skin cancer images.
+# A new machine-learning based diagnostic tool for differentiation of dermatoscopic skin cancer images.
 We developed an application to enable researchers to assess our skin cancer classification model and load their images to this app to get the results instantly.  Please note that this application has no clinical or diagnostic value and is for research purposes only.<br>
 This computer vision program classify dermatoscopic images of skin cancer lesions. We have used the HAM10000 MNIST dataset to train my model. The model's backbone is EfficientNetB1 and a Global average pooling 2D layer is added on top.
 <br>
