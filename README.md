@@ -34,8 +34,9 @@ It is generally not a good idea to train a very large Deep Neural Network from s
 
 ## Image augmentation
 In order to artificially increase the instances a data augmentation technique used to generating new sample images. This technique was consisting of a random width shift from -20% to +20% of image width and a random height shift from -20% to +20% of image height and a random max 0.2-degree shear angle in counter-clockwise direction to rectify the perception angle and also random horizontal and vertical flip was applied. Empty pixels then were filled by the nearest pixel. To better understand this procedure, we randomly applied data augmentation to 25 images for 3 times and the results are shown in the Figure bellow. Also this video provided in supplementary materials illustrates 600 frames of random augmentations for 9 lesions with frame rate of 10 FPS.
-![data augmentation](https://tajerian.info/ftp/image-aug.gif)
-
+<p align="center">
+  <img src="https://tajerian.info/ftp/image-aug.gif" />
+</p>
 ## ML model performance
 The Machine Learning model was trained and tested on Google Colaboratory environment with an Intel(R) Xeon(R) 2.30GHz CPU processor and 13GB of RAM and NVIDIA Tesla T4 CUDA enabled GPU processor with CUDA 11.2 which has designed for high-performance computing, deep learning training and inference, machine learning, and data analytics. The model was created with Python 3.8.6, and TensorFlow 2.11, Scikit-Learn 1.0.2, and Numpy as dependencies.<br>
 We used an Adaptive Momentum (Adam) optimizer on Categorical Cross Entropy loss function with a dynamic learning rate (LR) starting from 0.001. For fine tuning in order to make the optimizer converge faster and get closer to the global minimum of the loss function, the learning was set high in early epochs and by getting closer to the global optimum the learning rates decreased to take tiny steps toward the global optimum, also we used the ReduceLROnPlateau callback to reduce the LR even more if the validation loss did not improve after 3 epochs. The metrics and LR for each epoch is described in the Table bellow.
