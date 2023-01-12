@@ -37,6 +37,7 @@ In order to artificially increase the instances a data augmentation technique us
 <p align="center">
   <img src="https://tajerian.info/ftp/image-aug.gif" />
 </p>
+
 ## ML model performance
 The Machine Learning model was trained and tested on Google Colaboratory environment with an Intel(R) Xeon(R) 2.30GHz CPU processor and 13GB of RAM and NVIDIA Tesla T4 CUDA enabled GPU processor with CUDA 11.2 which has designed for high-performance computing, deep learning training and inference, machine learning, and data analytics. The model was created with Python 3.8.6, and TensorFlow 2.11, Scikit-Learn 1.0.2, and Numpy as dependencies.<br>
 We used an Adaptive Momentum (Adam) optimizer on Categorical Cross Entropy loss function with a dynamic learning rate (LR) starting from 0.001. For fine tuning in order to make the optimizer converge faster and get closer to the global minimum of the loss function, the learning was set high in early epochs and by getting closer to the global optimum the learning rates decreased to take tiny steps toward the global optimum, also we used the ReduceLROnPlateau callback to reduce the LR even more if the validation loss did not improve after 3 epochs. The metrics and LR for each epoch is described in the Table bellow.
